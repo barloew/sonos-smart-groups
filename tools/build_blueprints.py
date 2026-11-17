@@ -38,6 +38,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / "custom_components" / "sonos_smart_groups" / "blueprints"
 SOURCE = BASE / "_source" / "sonos_smart_group.yaml"
+RAW_BASE = "https://raw.githubusercontent.com/barloew/sonos-smart-groups/main"
 
 LANGUAGES = ["en", "nl", "de", "fr"]
 CONTROLLERS = ["sonos", "music_assistant"]
@@ -229,7 +230,12 @@ def build() -> dict:
                 strings = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
                 translate(blueprint, strings, language)
 
-            out[BASE / controller / f"{language}.yaml"] = HEADER + _dump(blueprint)
+            target = BASE / controller / f"{language}.yaml"
+            # Each variant points at its own raw file, so re-importing works.
+            blueprint["blueprint"]["source_url"] = (
+                f"{RAW_BASE}/{target.relative_to(ROOT).as_posix()}"
+            )
+            out[target] = HEADER + _dump(blueprint)
 
     return out
 

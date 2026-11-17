@@ -2,7 +2,7 @@
 # Change blueprints/_source/ and run the script instead.
 blueprint:
   name: Sonos Smart Group
-  source_url: https://raw.githubusercontent.com/barloew/sonos_smart_groups/main/custom_components/sonos_smart_groups/blueprints/sonos_smart_group.yaml
+  source_url: https://raw.githubusercontent.com/barloew/sonos-smart-groups/main/custom_components/sonos_smart_groups/blueprints/music_assistant/nl.yaml
   description: |-
     Een slimme groep bestaat uit één leidende kamer en een willekeurig aantal volgers die zich daaraan aanpassen.
 

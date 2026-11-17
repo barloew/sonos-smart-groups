@@ -2,7 +2,7 @@
 # Change blueprints/_source/ and run the script instead.
 blueprint:
   name: Sonos Smart Group
-  source_url: https://raw.githubusercontent.com/barloew/sonos_smart_groups/main/custom_components/sonos_smart_groups/blueprints/sonos_smart_group.yaml
+  source_url: https://raw.githubusercontent.com/barloew/sonos-smart-groups/main/custom_components/sonos_smart_groups/blueprints/music_assistant/en.yaml
   description: |-
     A smart group is one leader room and any number of followers that keep themselves in step with it.
 

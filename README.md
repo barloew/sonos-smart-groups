@@ -1,6 +1,6 @@
 # Sonos Smart Groups
 
-![Sonos Smart Groups](https://raw.githubusercontent.com/barloew/sonos_smart_groups/main/custom_components/sonos_smart_groups/brand/logo.png)
+![Sonos Smart Groups](https://raw.githubusercontent.com/barloew/sonos-smart-groups/main/custom_components/sonos_smart_groups/brand/logo.png)
 
 [![hacs][hacs-badge]][hacs-url]
 [![validate][validate-badge]][validate-url]
@@ -132,7 +132,7 @@ Prefer to do it by hand?
 
 1. Open **HACS** in Home Assistant.
 2. Click the three dots in the top right, then **Custom repositories**.
-3. Paste `https://github.com/barloew/sonos_smart_groups`, choose category
+3. Paste `https://github.com/barloew/sonos-smart-groups`, choose category
    **Integration**, and click **Add**.
 4. Search for **Sonos Smart Groups** and click **Download**.
 5. **Restart Home Assistant.**
@@ -352,10 +352,10 @@ Released under the [MIT License](LICENSE). Not affiliated with Sonos, Inc.
 [my-ha-url]: https://my.home-assistant.io/redirect/hacs_repository/?owner=barloew&repository=sonos_smart_groups&category=integration
 [hacs-badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs-url]: https://github.com/hacs/integration
-[validate-badge]: https://github.com/barloew/sonos_smart_groups/actions/workflows/validate.yml/badge.svg
-[validate-url]: https://github.com/barloew/sonos_smart_groups/actions/workflows/validate.yml
-[release-badge]: https://img.shields.io/github/v/release/barloew/sonos_smart_groups
-[release-url]: https://github.com/barloew/sonos_smart_groups/releases
+[validate-badge]: https://github.com/barloew/sonos-smart-groups/actions/workflows/validate.yml/badge.svg
+[validate-url]: https://github.com/barloew/sonos-smart-groups/actions/workflows/validate.yml
+[release-badge]: https://img.shields.io/github/v/release/barloew/sonos-smart-groups
+[release-url]: https://github.com/barloew/sonos-smart-groups/releases
 [advanced]: docs/advanced.md
 [music-assistant]: https://www.music-assistant.io/
-[issues]: https://github.com/barloew/sonos_smart_groups/issues
+[issues]: https://github.com/barloew/sonos-smart-groups/issues
