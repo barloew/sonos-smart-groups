@@ -62,7 +62,7 @@ bolted on, trading the loop for a system that feels slow.
 
 **Commands collide.** Two groups reacting to the same event interleave their
 calls on the Sonos network: a join silently fails, or a speaker stutters.
-`mode: queued` serialises one automation with itself, not two automations with
+`mode: queued` serializes one automation with itself, not two automations with
 each other, and YAML offers no lock that spans them.
 
 **Dragging a slider is not one event.** It is thirty, and every one is a
@@ -95,10 +95,10 @@ Three pieces, each doing what the others cannot.
 | Piece | Responsibility |
 |---|---|
 | **Blueprint** | When something should happen, and to whom. One automation per smart group. |
-| **Integration** | How it happens: serialised writes, idempotency, registry lookups. |
+| **Integration** | How it happens: serialized writes, idempotency, registry lookups. |
 | **Precedence locks** | Shared state between smart groups, carrying the principal. |
 
-The split matters. A blueprint alone cannot create helpers, cannot serialise
+The split matters. A blueprint alone cannot create helpers, cannot serialize
 across automations, and cannot read the entity registry — which is exactly what
 equalizer copying needs. An integration alone would mean re-implementing every
 trigger and condition Home Assistant already offers. Together, each part does
@@ -127,7 +127,7 @@ when you deliberately build a mutual pair.
 
 **2 · Idempotency.** The `apply` service compares before it writes. A follower
 already at the target volume is left alone, so the echo of a write does not
-produce another write and the chain dies on its own. This is the main defence.
+produce another write and the chain dies on its own. This is the main defense.
 
 **3 · Tolerance.** Floating point makes exact comparison useless: `0.18 * 100`
 is `18.000000000000004`. The tolerance is the band within which two values
@@ -144,7 +144,7 @@ a stream of events; only the final value survives. Set it to `0` if you use
 physical remote buttons and want instant response — idempotency still protects
 you.
 
-### Serialisation
+### Serialization
 
 Every write passes through a single `asyncio.Lock` shared by all smart groups,
 so two groups reacting to the same event cannot interleave their commands on
@@ -240,23 +240,23 @@ entries, and only when they apply:
 
 | Entry | Condition |
 |---|---|
-| **Favorites** | the speaker has Sonos favourites |
+| **Favorites** | the speaker has Sonos favorites |
 | **Music Library** | a local music share is configured |
 | **Plex** | the Plex integration is set up |
 | **Spotify** | the Spotify integration is set up |
 | **Media source** | always — TTS and `/config/media` |
 
-There is no catalogue browsing for Apple Music, Tidal, TuneIn, Sonos Radio,
+There is no catalog browsing for Apple Music, Tidal, TuneIn, Sonos Radio,
 Amazon Music or Deezer. The integration never sees those services; it sees what
 the speaker reports.
 
-**Favourites are the bridge.** Whatever you favourite in the Sonos app, from
+**Favorites are the bridge.** Whatever you favorite in the Sonos app, from
 any service, appears under Favorites. `favorites_payload()` groups them by
 `item_class` through `SONOS_TYPES_MAPPING`, which is why a TuneIn station lands
 under Radio and a Tidal playlist under Playlists.
 
-**Favourites are referenced, not named.** The blueprint stores the
-`media_content_id` the browser returned. Rename or delete the favourite in the
+**Favorites are referenced, not named.** The blueprint stores the
+`media_content_id` the browser returned. Rename or delete the favorite in the
 Sonos app and that reference breaks — the automation will fail rather than play
 something else, but it will fail silently until you look at the trace.
 
@@ -391,7 +391,7 @@ two will hand speakers back and forth. Precedence is not cycle-checked.
 
 ### `sonos_smart_groups.apply`
 
-Mirrors a leader onto its followers. Serialised and idempotent.
+Mirrors a leader onto its followers. Serialized and idempotent.
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
@@ -462,7 +462,7 @@ stopped a run rather than showing an anonymous index.
 
 **Settings → Automations & scenes**, open the automation, then the three dots →
 **Traces**. The *Step Details* pane shows each condition with its result. The
-ones worth recognising:
+ones worth recognizing:
 
 | Alias | Means |
 |---|---|
@@ -550,7 +550,7 @@ custom_components/sonos_smart_groups/
 
 On `async_setup_entry`, every `*.yaml` in `blueprints/` is copied to
 `blueprints/automation/sonos_smart_groups/` in the user's config directory —
-and kept up to date afterwards, without ever throwing away an edit.
+and kept up to date afterward, without ever throwing away an edit.
 
 The awkward part is telling an untouched file from an edited one. Overwriting
 blindly destroys the user's work; never overwriting means a fix in the
@@ -574,7 +574,7 @@ blueprint** in the blueprint list as a second route. That fetches from `main`
 rather than from the installed release, so it can land a blueprint slightly
 ahead of the integration.
 
-Afterwards the automation blueprint cache is dropped, so the blueprint is
+Afterward the automation blueprint cache is dropped, so the blueprint is
 usable straight away without the *Reload blueprints* menu item:
 
 ```python
@@ -627,7 +627,7 @@ actions too — the two lists are indistinguishable once they fire.
 3. If it should be scalable, add it to `FACTORED_KEYS` with a follower key, and
    add that key to the follower object selector
 
-Nothing else changes: `apply` derives its behaviour from those lists.
+Nothing else changes: `apply` derives its behavior from those lists.
 
 ### Validation
 
