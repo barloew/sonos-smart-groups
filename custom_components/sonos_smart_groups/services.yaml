@@ -1,7 +1,7 @@
 apply:
   name: Apply smart group
   description: >-
-    Mirror a leader onto its followers. Writes are serialised across all smart
+    Mirror a leader onto its followers. Writes are serialized across all smart
     groups and skipped when the speaker already holds the target value, which
     is what keeps feedback loops from starting.
   fields:
